@@ -77,11 +77,6 @@ public class PlayerControl : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
     }
 
-    public void Die()
-    {
-        
-    }
-
     public void StopPlayerMovement()
     {
         CanMove = false;
@@ -94,6 +89,7 @@ public class PlayerControl : MonoBehaviour
 
     private void UseRightMask()
     {
+        print(_rightMasks[_selectedRightMask]);
         if (_rightMasks[_selectedRightMask] != _activeRightMask)
         {
             if (_activeRightMask != null)
