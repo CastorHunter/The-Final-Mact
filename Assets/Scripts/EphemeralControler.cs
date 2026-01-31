@@ -3,16 +3,11 @@ using UnityEngine;
 
 public class EphemeralControler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameManager gm;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        gm = FindFirstObjectByType<GameManager>();
     }
 
     public void disappear(Ephemeral platform)
@@ -24,9 +19,10 @@ public class EphemeralControler : MonoBehaviour
     {
         var susDuration = platform.sustainDuration;
         var disDuration = platform.disappearDuration;
-        yield return new WaitForSeconds(susDuration);
+        var es = gm.environmentSpeed;
+        yield return new WaitForSeconds(susDuration*(1/es));
         platform.gameObject.SetActive(false);
-        yield return new WaitForSeconds(disDuration);
+        yield return new WaitForSeconds(disDuration*(1/es));
         platform.gameObject.SetActive(true);
         
         

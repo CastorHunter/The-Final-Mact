@@ -6,13 +6,12 @@ public class Ephemeral : MonoBehaviour
 {
     public int sustainDuration;
     public int disappearDuration;
-    public EphemeralControler ec;
-
-    public bool playerDependant;
+    private EphemeralControler ec;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ec= FindFirstObjectByType<EphemeralControler>();
+
     }
 
     // Update is called once per frame
