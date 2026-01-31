@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public bool ISGrounded, CanMove = true;
     
     private Vector3 _lastPosition;
+    private Rigidbody _rb;
     private int _toRight, _toLeft, _selectedLeftMask = 0, _selectedRightMask = 0;
     private Mask _activeLeftMask, _activeRightMask;
     [SerializeField] private List<Mask> _leftMasks,  _rightMasks;
@@ -22,13 +23,14 @@ public class PlayerControl : MonoBehaviour
         PlayerBaseJumpHeight = PlayerBaseJumpHeight*0.1f;
         PlayerJumpHeight = PlayerBaseJumpHeight;
         PlayerSpeed = PlayerBaseSpeed;
+        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         if (CanMove)
         {
-            transform.Translate(Vector3.forward * PlayerSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * (PlayerSpeed * Time.deltaTime));
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && ISGrounded)
@@ -73,8 +75,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Jump()
     {
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 0);
-        GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
+        _rb.linearVelocity = new Vector3(0, 0, 0);
+        _rb.AddForce(new Vector3(0, 300, 0));
     }
 
     public void StopPlayerMovement()
