@@ -1201,14 +1201,14 @@ MonoBehaviour:
   PlayerJumpHeight: 20
   PlayerBaseSpeed: 5
   PlayerBaseJumpHeight: 20
-  ISGrounded: 0
+  ISGrounded: 1
   CanMove: 1
   _leftMasks:
   - {fileID: 1699911946}
   - {fileID: 1814607249}
   _rightMasks:
-  - {fileID: 1699911946}
   - {fileID: 1814607249}
+  - {fileID: 1699911946}
 --- !u!54 &1936516453
 Rigidbody:
   m_ObjectHideFlags: 0
