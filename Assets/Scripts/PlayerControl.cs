@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     
     private Vector3 _lastPosition;
     private Rigidbody _rb;
-    private int _toRight, _toLeft, _selectedLeftMask = 0, _selectedRightMask = 0;
+    private int _selectedLeftMask = 0, _selectedRightMask = 0;
     private Mask _activeLeftMask, _activeRightMask;
     [SerializeField] private List<Mask> _leftMasks,  _rightMasks;
 
