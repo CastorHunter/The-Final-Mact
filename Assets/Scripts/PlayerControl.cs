@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     [Header("Movement")]
     public float PlayerSpeed, PlayerJumpHeight;
-    [SerializeField] private float _playerBaseSpeed, _playerBaseJumpHeight;
+    public float PlayerBaseSpeed, PlayerBaseJumpHeight;
     
     public bool ISGrounded, CanMove = true;
     
@@ -19,15 +19,16 @@ public class PlayerControl : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _playerBaseJumpHeight = _playerBaseJumpHeight*0.1f;
-        PlayerJumpHeight = _playerBaseJumpHeight;
+        PlayerBaseJumpHeight = PlayerBaseJumpHeight*0.1f;
+        PlayerJumpHeight = PlayerBaseJumpHeight;
+        PlayerSpeed = PlayerBaseSpeed;
     }
 
     void Update()
     {
         if (CanMove)
         {
-            transform.Translate(Vector3.forward * _playerBaseSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * PlayerSpeed * Time.deltaTime);
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && ISGrounded)
@@ -45,7 +46,7 @@ public class PlayerControl : MonoBehaviour
             UseRightMask();
         }
         
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeLeftMask();
         }
@@ -79,38 +80,45 @@ public class PlayerControl : MonoBehaviour
     public void StopPlayerMovement()
     {
         CanMove = false;
-        print("StopPlayerMovement");
     }
 
     public void StartPlayerMovement()
     {
         CanMove = true;
-        print("StartPlayerMovement");
     }
 
     private void UseRightMask()
     {
-        if (_activeRightMask != null)
+        print(_rightMasks[_selectedRightMask]);
+        if (_rightMasks[_selectedRightMask] != _activeRightMask)
         {
-            _activeRightMask.Deactivate();
+            if (_activeRightMask != null)
+            {
+                _activeRightMask.Deactivate();
+            }
+            _rightMasks[_selectedRightMask].Activate();
+            _activeRightMask = _rightMasks[_selectedRightMask];
         }
-        _rightMasks[_selectedRightMask].Activate();
     }
 
     private void UseLeftMask()
     {
-        if (_activeLeftMask != null)
+        if (_leftMasks[_selectedLeftMask] != _activeLeftMask)
         {
-            _activeLeftMask.Deactivate();
+            if (_activeLeftMask != null)
+            {
+                _activeLeftMask.Deactivate();
+            }
+            _leftMasks[_selectedLeftMask].Activate();
+            _activeLeftMask = _leftMasks[_selectedLeftMask];
         }
-        _leftMasks[_selectedLeftMask].Activate();
     }
-
+    
     private void ChangeRightMask()
     {
         if (_rightMasks.Count > 1)
         {
-            if (_selectedRightMask >= _rightMasks.Count)
+            if (_selectedRightMask >= _rightMasks.Count-1)
             {
                 _selectedRightMask = 0;
             }
@@ -125,7 +133,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (_leftMasks.Count > 1)
         {
-            if (_selectedLeftMask >= _leftMasks.Count)
+            if (_selectedLeftMask >= _leftMasks.Count-1)
             {
                 _selectedLeftMask = 0;
             }

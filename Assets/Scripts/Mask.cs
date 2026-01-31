@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Mask : MonoBehaviour
 {
+    public PlayerControl _player;
     public virtual void Activate()
     {
         print("Activated");
