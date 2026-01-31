@@ -7,7 +7,6 @@ public class SplineSpeed : MonoBehaviour
     private GameManager gm;
 
     public List<SplineAnimate> balancingObjects;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gm= FindFirstObjectByType<GameManager>();

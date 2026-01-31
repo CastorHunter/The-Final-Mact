@@ -7,19 +7,10 @@ public class Bouncing : MonoBehaviour
     public int verticalForce;
     public float delay;
     public int horizontalForce;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     private void OnCollisionEnter(Collision other)
     {
         StartCoroutine(Bounce( other.gameObject ));
     }
-
-    // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator Bounce(GameObject bounced)
     {
         if (bounced.gameObject.CompareTag("Player"))

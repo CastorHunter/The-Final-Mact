@@ -18,9 +18,6 @@ public class SlowedFov : MonoBehaviour
             cam.fieldOfView += decaySpeed;
         }
     }
-
-    
-
     public void ResetFov()
     {
         cam.fieldOfView = 60;

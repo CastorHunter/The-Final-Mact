@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 184630825}
   - component: {fileID: 184630826}
+  - component: {fileID: 184630827}
   m_Layer: 0
   m_Name: SlowDownMask
   m_TagString: Untagged
@@ -279,6 +280,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlowDownMask
   _player: {fileID: 1936516452}
   slowMultiplier: 2
+--- !u!114 &184630827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184630824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ca3a1a6009aa7438385ac6564a33b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlowedFov
+  cam: {fileID: 0}
+  decaySpeed: 0.01
+  isActive: 0
 --- !u!1 &488283367
 GameObject:
   m_ObjectHideFlags: 0
