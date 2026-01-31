@@ -19,4 +19,9 @@ public class Killing : MonoBehaviour
             if (cp.activatedPoint){player.transform.position = cp.transform.position;}
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        killing();
+    }
 }
