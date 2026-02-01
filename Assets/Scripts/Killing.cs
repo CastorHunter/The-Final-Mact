@@ -7,8 +7,7 @@ public class Killing : MonoBehaviour
     public PlayerControl player;
     void Start()
     {
-        cm = FindFirstObjectByType<CheckpointManager>();
-        player = FindFirstObjectByType<PlayerControl>();
+        
     }
 
     private void killing()

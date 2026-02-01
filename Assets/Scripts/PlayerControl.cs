@@ -18,6 +18,8 @@ public class PlayerControl : MonoBehaviour
     private Mask _activeLeftMask, _activeRightMask;
     private bool _canUseMask;
     [SerializeField] private List<Mask> _leftMasks,  _rightMasks;
+
+    private int _numberOfCollisionGround;
     
     [SerializeField] private Image _rightMaskImage, _leftMaskImage;
     [SerializeField] private TextMeshProUGUI _cooldownText;
@@ -206,13 +208,21 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             ISGrounded = true;
+            _numberOfCollisionGround++;
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            ISGrounded = false;
+            if(_numberOfCollisionGround > 0)
+            {
+                _numberOfCollisionGround--;
+            }
+            else
+            {
+                ISGrounded = false;
+            }
         }
     }
 
