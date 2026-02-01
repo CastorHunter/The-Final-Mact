@@ -11,12 +11,14 @@ public class SlowDownMask : Mask
     }
     public override void Activate()
     {
+        _player.PlayerSpeed = _player.PlayerBaseSpeed;
         _player.PlayerSpeed = _player.PlayerSpeed / slowMultiplier;
         _slowedFov.isActive = true;
     }
 
     public override void Deactivate()
     {
+        _player.PlayerSpeed = _player.PlayerBaseSpeed;
         _slowedFov.isActive = false;
         _slowedFov.ResetFov();
     }

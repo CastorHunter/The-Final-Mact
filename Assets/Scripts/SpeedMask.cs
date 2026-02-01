@@ -5,6 +5,7 @@ public class SpeedMask : Mask
     [SerializeField] private float speedMultiplier;
     public override void Activate()
     {
+        _player.PlayerSpeed = _player.PlayerBaseSpeed;
         _player.PlayerSpeed = _player.PlayerSpeed * speedMultiplier;
     }
 

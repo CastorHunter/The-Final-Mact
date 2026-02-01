@@ -16,6 +16,7 @@ public class SlowedFov : MonoBehaviour
         if (isActive)
         {
             cam.fieldOfView += decaySpeed;
+            cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, 60, 150);
         }
     }
     public void ResetFov()
