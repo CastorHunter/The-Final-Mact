@@ -8,16 +8,25 @@ public class ProjectileMask : Mask
     [SerializeField] private int _cooldown = 10;
     private bool _canFire = false, _cooldownFinished;
     
+    [SerializeField] private CameraControl _playerCamera;
+    
+    private void Start()
+    {
+        _playerCamera.HasToShake = false;
+    }
+    
     public override void Activate()
     {
         _canFire = true;
         _cooldownFinished = true;
+        _playerCamera.HasToShake = true;
     }
 
     public override void Deactivate()
     {
         _canFire = false;
         _cooldownFinished = false;
+        _playerCamera.HasToShake = false;
     }
 
     private void Update()
