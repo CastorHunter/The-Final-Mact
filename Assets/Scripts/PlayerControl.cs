@@ -51,7 +51,7 @@ public class PlayerControl : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (_canUseMask && _leftMasks[_selectedLeftMask].GetComponent<EmptyMask>() == null)
+            if ((_canUseMask && _leftMasks[_selectedLeftMask].GetComponent<EmptyMask>() == null) && _leftMasks[_selectedLeftMask] != _activeLeftMask)
             {
                 _canUseMask = false;
                 StartCoroutine(MaskCooldown());
@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (_canUseMask && _rightMasks[_selectedRightMask].GetComponent<EmptyMask>() == null)
+            if ((_canUseMask && _rightMasks[_selectedRightMask].GetComponent<EmptyMask>() == null) && _rightMasks[_selectedRightMask] != _activeRightMask)
             {
                 _canUseMask = false;
                 StartCoroutine(MaskCooldown());
