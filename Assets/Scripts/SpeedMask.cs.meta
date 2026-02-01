@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: bb0904c8d8dfafc479dc34816d334d4d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _player: {instanceID: 0}
+  - MaskSprite: {fileID: 21300000, guid: f730db9c133edfc429b9a14713a07e84, type: 3}
+  - _blurImage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
