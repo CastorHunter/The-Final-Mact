@@ -6,14 +6,11 @@ public class Rotating : MonoBehaviour
     public int speedy;
     public int speedz;
     private GameManager gm;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gm = FindFirstObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         var es = gm.environmentSpeed;
