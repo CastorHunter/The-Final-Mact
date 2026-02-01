@@ -20,6 +20,8 @@ public class CameraControl : MonoBehaviour {
     
     [SerializeField] private PlayerControl _player;
 
+    public bool HasToShake = false;
+
     void Start()
     {
         StartCoroutine(Shaking());
@@ -37,18 +39,23 @@ public class CameraControl : MonoBehaviour {
         _player.transform.localRotation = xRot;
     }
 
-    private IEnumerator Shaking() //rajouter les conditions grounded
+    private IEnumerator Shaking(float _shakeIntensity = 1)
     {
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            if (_player.CanMove)
+            if (_player.CanMove || HasToShake)
             {
+                _shakeIntensity = Random.Range(-_shakeIntensity, _shakeIntensity);
                 if (_handsUp)
                 {
                     if (i > 0)
                     {
                         transform.position += new Vector3(0, 0.02f, 0);
+                        if (HasToShake)
+                        {
+                            transform.position += new Vector3(_shakeIntensity, 0.18f, 0);
+                        }
                         _handsUp = false;
                         i -= 1;
                     }
@@ -58,6 +65,10 @@ public class CameraControl : MonoBehaviour {
                     if (i < 20)
                     {
                         transform.position += new Vector3(0, -0.02f, 0);
+                        if (HasToShake)
+                        {
+                            transform.position += new Vector3(_shakeIntensity, -0.18f, 0);
+                        }
                         _handsUp = true;
                         i += 1;
                     }
