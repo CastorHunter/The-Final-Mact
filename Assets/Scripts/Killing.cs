@@ -21,6 +21,7 @@ public class Killing : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("killed");
         killing();
     }
 }
