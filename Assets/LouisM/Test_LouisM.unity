@@ -3044,7 +3044,7 @@ PrefabInstance:
     - target: {fileID: -3003978651872438895, guid: 3779a021b4b9c5a4fa781111a18fc806, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c9af5b07e84eab5459b45d13fbb3776c, type: 2}
+      objectReference: {fileID: 2100000, guid: d2e137a92a8cb2b46b805bec2f21d4ef, type: 2}
     - target: {fileID: 919132149155446097, guid: 3779a021b4b9c5a4fa781111a18fc806, type: 3}
       propertyPath: m_Name
       value: aamsaak
@@ -3060,7 +3060,7 @@ PrefabInstance:
     - target: {fileID: 8332104559842408884, guid: 3779a021b4b9c5a4fa781111a18fc806, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7ea23db3c66c7824f8bcce9094ed0add, type: 2}
+      objectReference: {fileID: 2100000, guid: 8777f5340cef42c4083e7bda23247d1a, type: 2}
     - target: {fileID: 8589296038805143892, guid: 3779a021b4b9c5a4fa781111a18fc806, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
