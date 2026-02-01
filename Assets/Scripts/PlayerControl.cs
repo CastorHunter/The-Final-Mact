@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,7 +16,11 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody _rb;
     private int _selectedLeftMask = 0, _selectedRightMask = 0;
     private Mask _activeLeftMask, _activeRightMask;
+    private bool _canUseMask;
     [SerializeField] private List<Mask> _leftMasks,  _rightMasks;
+    
+    [SerializeField] private Image _rightMaskImage, _leftMaskImage;
+    [SerializeField] private TextMeshProUGUI _cooldownText;
 
     void Start()
     {
@@ -24,6 +30,11 @@ public class PlayerControl : MonoBehaviour
         PlayerJumpHeight = PlayerBaseJumpHeight;
         PlayerSpeed = PlayerBaseSpeed;
         _rb = GetComponent<Rigidbody>();
+        _activeLeftMask = _leftMasks[0];
+        _activeRightMask = _rightMasks[0];
+        _canUseMask = true;
+        UpdateUI();
+        UpdateCooldownUI();
     }
 
     void Update()
@@ -40,12 +51,22 @@ public class PlayerControl : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            UseLeftMask();
+            if (_canUseMask && _leftMasks[_selectedLeftMask].GetComponent<EmptyMask>() == null)
+            {
+                _canUseMask = false;
+                StartCoroutine(MaskCooldown());
+                UseLeftMask();
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            UseRightMask();
+            if (_canUseMask && _rightMasks[_selectedRightMask].GetComponent<EmptyMask>() == null)
+            {
+                _canUseMask = false;
+                StartCoroutine(MaskCooldown());
+                UseRightMask();
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Q))
@@ -91,7 +112,6 @@ public class PlayerControl : MonoBehaviour
 
     private void UseRightMask()
     {
-        print(_rightMasks[_selectedRightMask]);
         if (_rightMasks[_selectedRightMask] != _activeRightMask)
         {
             if (_activeRightMask != null)
@@ -129,6 +149,7 @@ public class PlayerControl : MonoBehaviour
                 _selectedRightMask += 1;
             }
         }
+        UpdateUI();
     }
 
     private void ChangeLeftMask()
@@ -143,6 +164,26 @@ public class PlayerControl : MonoBehaviour
             {
                 _selectedLeftMask += 1;
             }
+        }
+        UpdateUI();
+    }
+    
+    private void UpdateUI()
+    {
+        _rightMaskImage.GetComponent<Image>().sprite = _rightMasks[_selectedRightMask].MaskSprite;
+        _leftMaskImage.GetComponent<Image>().sprite = _leftMasks[_selectedLeftMask].MaskSprite;
+    }
+
+    private void UpdateCooldownUI(int cooldown = 0)
+    {
+        if (cooldown > 0)
+        {
+            _cooldownText.enabled = true;
+            _cooldownText.text = cooldown.ToString();
+        }
+        else
+        {
+            _cooldownText.enabled = false;
         }
     }
     
@@ -159,5 +200,16 @@ public class PlayerControl : MonoBehaviour
         {
             ISGrounded = false;
         }
+    }
+
+    private IEnumerator MaskCooldown()
+    {
+        for (int i = 5; i >= 0; i--)
+        {
+            UpdateCooldownUI(i);
+            yield return new WaitForSeconds(1f);
+        }
+        UpdateCooldownUI();
+        _canUseMask = true;
     }
 }

@@ -13,13 +13,6 @@ public class Ephemeral : MonoBehaviour
         ec= FindFirstObjectByType<EphemeralControler>();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void activated()
     {
         ec.disappear(this);
