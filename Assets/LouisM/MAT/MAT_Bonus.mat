@@ -39,7 +39,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Fresnel_Power: 2
+    - _Fresnel_Power: 5
     - _Glow_Spread: 1
     - _QueueControl: 0
     m_Colors:

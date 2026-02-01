@@ -39,11 +39,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Fresnel_Power: 2
+    - _Fresnel_Power: 8
     - _Glow_Spread: 1
     - _QueueControl: 0
     m_Colors:
-    - _Fresnel_Color: {r: 766.9961, g: 7.4762983, b: 0, a: 1}
+    - _Fresnel_Color: {r: 0, g: 231.99713, b: 766.9961, a: 1}
     - _Interior_Spread: {r: 0.32950422, g: 0.46093768, b: 1.3750967, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
