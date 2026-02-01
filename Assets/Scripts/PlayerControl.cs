@@ -91,7 +91,6 @@ public class PlayerControl : MonoBehaviour
 
     private void UseRightMask()
     {
-        print(_rightMasks[_selectedRightMask]);
         if (_rightMasks[_selectedRightMask] != _activeRightMask)
         {
             if (_activeRightMask != null)
